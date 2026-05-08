@@ -115,10 +115,12 @@ const char* calc_get_display(CalcState *s){
     update_disp_from_current(s);
     return dispbuf;
 }
+/* useless feature from windows 7 */
 void calc_negate(CalcState *s){
     s->current = -s->current;
     s->entering = 0;
 }
+/* usefull features from windows 7 */
 void calc_sqrt(CalcState *s){
     if (s->current < 0.0L){
         s->current = 0.0L;
