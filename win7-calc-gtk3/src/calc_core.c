@@ -115,3 +115,32 @@ const char* calc_get_display(CalcState *s){
     update_disp_from_current(s);
     return dispbuf;
 }
+void calc_negate(CalcState *s){
+    s->current = -s->current;
+    s->entering = 0;
+}
+void calc_sqrt(CalcState *s){
+    if (s->current < 0.0L){
+        s->current = 0.0L;
+    } else {
+        s->current = sqrtl(s->current);
+    }
+    s->entering = 0;
+}
+
+void calc_percent(CalcState *s){
+    if (s->pending_op != OP_NONE){
+        s->current = s->accumulator * (s->current / 100.0L);
+    } else {
+        s->current = s->current / 100.0L;
+    }
+    s->entering = 0;
+}
+
+void calc_reciprocal(CalcState *s){
+    if (s->current == 0.0L){
+        return;
+    }
+    s->current = 1.0L / s->current;
+    s->entering = 0;
+}
