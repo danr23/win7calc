@@ -1,6 +1,6 @@
 #ifndef CALC_CORE_H
 #define CALC_CORE_H
-
+#include <math.h>
 typedef enum { OP_NONE, OP_ADD, OP_SUB, OP_MUL, OP_DIV } Op;
 
 typedef struct {
@@ -18,5 +18,9 @@ void calc_press_equals(CalcState *s);
 void calc_clear_entry(CalcState *s);
 void calc_clear_all(CalcState *s);
 const char* calc_get_display(CalcState *s);
+void calc_negate(CalcState *s);
+void calc_sqrt(CalcState *s);
+void calc_percent(CalcState *s);
+void calc_reciprocal(CalcState *s);
 
 #endif
