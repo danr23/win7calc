@@ -86,10 +86,9 @@ GtkWidget* create_main_window(GtkApplication *app){
 
     GtkCssProvider *css = gtk_css_provider_new();
     gtk_css_provider_load_from_data(css,
-        /* Window background — Win7 blue-grey gradient */
         /*"window { background-image: linear-gradient(to bottom, #f4f6fa, #f4f6fa, #f4f6fa, #dce6f4, #dce6f4, #c8d8ee); color: #1a1a1a; margin: 6px; }"*/
         "window { background-image: linear-gradient(to bottom, #edf4fb, #dae6f2, #dae6f2, #dae6f2, #dae6f2, #dae6f2); color: #1a1a1a; margin: 2px;  padding: 6px; right:100%; top: 100%; font-size: 10px; }"
-        "scrolledwindow.display-scroll scrollbar { min-width: 0; min-height: 0; opacity: 1; }"
+        "scrolledwindow.display-scroll scrollbar { min-width: 0; min-height: 0; opacity: 0; }"
         /* Display frame */
         ".calc-frame { "
         "  border: 0px solid #8e9cae; border-radius: 4px; padding: 1px; right: 100%; top: 100%;}"
