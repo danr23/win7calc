@@ -8,3 +8,8 @@ and then run <code> sudo ln -sf ~/win7calc/win7-calc-gtk3/builddir/win7calc /usr
 <img src="screenshot.png" alt="Screenshot">
 <h2>How to make it look more like windows 7's calculator</h2>
 To change the look of the menubar in the calculator, install the <a href="https://store.kde.org/p/1012735/">Aero GTK3 Theme</a>
+<h2>To do list:</h2>
+    <h3>Make scientific mode for the calculator ❌</h3>
+    <h3>Make an accurate windows 7 calculator standard mode layout ✅</h3>
+    <h3>Make an accurate windows 7 calculator scientific mode layout ❌</h3>
+    <h3>Make the buttons "Copy" and "Paste" in the menubar work ❌</h3>
