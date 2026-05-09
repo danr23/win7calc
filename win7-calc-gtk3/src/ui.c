@@ -64,7 +64,70 @@ static void reciprocal_clicked(GtkWidget *btn, gpointer _){
     calc_reciprocal(&state);
     update_display();
 }
+static gboolean on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer _){
+    switch (event->keyval) {
+        /* Digits */
+        case GDK_KEY_0: case GDK_KEY_KP_0: calc_enter_digit(&state, 0); break;
+        case GDK_KEY_1: case GDK_KEY_KP_1: calc_enter_digit(&state, 1); break;
+        case GDK_KEY_2: case GDK_KEY_KP_2: calc_enter_digit(&state, 2); break;
+        case GDK_KEY_3: case GDK_KEY_KP_3: calc_enter_digit(&state, 3); break;
+        case GDK_KEY_4: case GDK_KEY_KP_4: calc_enter_digit(&state, 4); break;
+        case GDK_KEY_5: case GDK_KEY_KP_5: calc_enter_digit(&state, 5); break;
+        case GDK_KEY_6: case GDK_KEY_KP_6: calc_enter_digit(&state, 6); break;
+        case GDK_KEY_7: case GDK_KEY_KP_7: calc_enter_digit(&state, 7); break;
+        case GDK_KEY_8: case GDK_KEY_KP_8: calc_enter_digit(&state, 8); break;
+        case GDK_KEY_9: case GDK_KEY_KP_9: calc_enter_digit(&state, 9); break;
 
+        /* Decimal point */
+        case GDK_KEY_period:
+        case GDK_KEY_KP_Decimal:    calc_enter_dot(&state);              break;
+
+        /* Operators */
+        case GDK_KEY_plus:
+        case GDK_KEY_KP_Add:        calc_press_op(&state, OP_ADD);       break;
+
+        case GDK_KEY_minus:
+        case GDK_KEY_KP_Subtract:   calc_press_op(&state, OP_SUB);       break;
+
+        case GDK_KEY_asterisk:
+        case GDK_KEY_KP_Multiply:   calc_press_op(&state, OP_MUL);       break;
+
+        case GDK_KEY_slash:
+        case GDK_KEY_KP_Divide:     calc_press_op(&state, OP_DIV);       break;
+
+        /* Enter (Equals) */
+        case GDK_KEY_equal:
+        case GDK_KEY_Return:
+        case GDK_KEY_KP_Enter:      calc_press_equals(&state);           break;
+
+        /* Backspace — delete one digit */
+        case GDK_KEY_BackSpace:     calc_backspace(&state);               break;
+
+        /* Escape = C (clear all) */
+        case GDK_KEY_Escape:        calc_clear_all(&state);              break;
+
+        /* Delete = CE (clear entry) */
+        case GDK_KEY_Delete:        calc_clear_entry(&state);            break;
+
+        /* F9 = negate, like that useless feature from windows 7 */
+        case GDK_KEY_F9:            calc_negate(&state);                 break;
+
+        /* @ = sqrt  */
+        case GDK_KEY_at:            calc_sqrt(&state);                   break;
+
+        /* % */
+        case GDK_KEY_percent:       calc_percent(&state);                break;
+
+        /* r = 1/x (like that usefull feature from windows 7 */
+        case GDK_KEY_r:
+        case GDK_KEY_R:             calc_reciprocal(&state);             break;
+
+        default:
+            return FALSE; /* key not handled */
+    }
+    update_display();
+    return TRUE; /* key was handled */
+}
 static void on_about_activate(GtkWidget *w, gpointer user_data){
     GtkWindow *parent = GTK_WINDOW(user_data);
     GtkWidget *dlg = gtk_message_dialog_new(parent,
@@ -86,6 +149,7 @@ GtkWidget* create_main_window(GtkApplication *app){
 
     GtkCssProvider *css = gtk_css_provider_new();
     gtk_css_provider_load_from_data(css,
+        /* Window background — Win7 blue-grey gradient */
         /*"window { background-image: linear-gradient(to bottom, #f4f6fa, #f4f6fa, #f4f6fa, #dce6f4, #dce6f4, #c8d8ee); color: #1a1a1a; margin: 6px; }"*/
         "window { background-image: linear-gradient(to bottom, #edf4fb, #dae6f2, #dae6f2, #dae6f2, #dae6f2, #dae6f2); color: #1a1a1a; margin: 2px;  padding: 6px; right:100%; top: 100%; font-size: 10px; }"
         "scrolledwindow.display-scroll scrollbar { min-width: 0; min-height: 0; opacity: 0; }"
@@ -347,7 +411,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         gtk_grid_attach(GTK_GRID(grid), b, 4, 4, 1, 2);
         g_signal_connect(b, "clicked", G_CALLBACK(eq_clicked), NULL);
     }
-
+    g_signal_connect(win, "key-press-event", G_CALLBACK(on_key_press), NULL);
     gtk_widget_show_all(win);
     return win;
 }
