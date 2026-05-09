@@ -71,7 +71,7 @@ static void on_about_activate(GtkWidget *w, gpointer user_data){
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
         GTK_MESSAGE_INFO,
         GTK_BUTTONS_OK,
-        "Win7 Calculator\nGTK3 port");
+        "Calculator\n Made by Microsoft. Inc.\n Copyright(c) 2009 Microsoft Corporation.\n All rights reserved");
     gtk_dialog_run(GTK_DIALOG(dlg));
     gtk_widget_destroy(dlg);
 }
