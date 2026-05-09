@@ -115,12 +115,10 @@ const char* calc_get_display(CalcState *s){
     update_disp_from_current(s);
     return dispbuf;
 }
-/* useless feature from windows 7 */
 void calc_negate(CalcState *s){
     s->current = -s->current;
     s->entering = 0;
 }
-/* usefull features from windows 7 */
 void calc_sqrt(CalcState *s){
     if (s->current < 0.0L){
         s->current = 0.0L;
@@ -145,4 +143,19 @@ void calc_reciprocal(CalcState *s){
     }
     s->current = 1.0L / s->current;
     s->entering = 0;
+}
+void calc_backspace(CalcState *s){
+    if (!s->entering) return;  /* result showing, nothing to delete */
+
+    /* strip the last character from the display buffer */
+    char *buf = dispbuf;
+    size_t len = strlen(buf);
+    if (len > 1){
+        buf[len - 1] = '\0';
+        s->current = strtold(buf, NULL);
+    } else {
+        /* only one digit left, reset to 0 */
+        s->current = 0.0L;
+        s->entering = 0;
+    }
 }
