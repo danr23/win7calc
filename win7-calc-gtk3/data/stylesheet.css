@@ -46,7 +46,7 @@ button.calc:hover {
     border-color: #ffff00;
 }
 button.calc:active { 
-    background-image: url("activebtn.png"); 
+    background-image: url("eqactivebtn.png"); 
     background-repeat: no-repeat;
     background-size: cover; 
 }
@@ -67,7 +67,7 @@ button.op:hover {
     border-color: #ffff00;
 }
 button.op:active { 
-    background-image: url("activebtn.png"); 
+    background-image: url("eqactivebtn.png"); 
     background-repeat: no-repeat;
     background-size: cover;
 }
