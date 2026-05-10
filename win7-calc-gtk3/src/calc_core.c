@@ -16,11 +16,9 @@ void calc_init(CalcState *s){
 
 static void update_disp_from_current(CalcState *s){
     if (s->entering) {
-        /* dispbuf already holds the typed string */
         return;
     }
     snprintf(dispbuf, sizeof(dispbuf), "%.15Lg", s->current);
-    /* trim trailing zeros and dot */
     char *p = dispbuf;
     if (strchr(p, '.')) {
         char *end = p + strlen(p) - 1;
@@ -36,7 +34,7 @@ void calc_enter_digit(CalcState *s, int digit){
     }
     size_t len = strlen(dispbuf);
     if (len + 2 < sizeof(dispbuf)) {
-        if (!(len==1 && dispbuf[0]=='0')) /* avoid leading zero */
+        if (!(len==1 && dispbuf[0]=='0'))
             ; 
         if (len==1 && dispbuf[0]=='0') dispbuf[0] = '\0';
         char tmp[2] = { '0' + (digit%10), '\0' };
@@ -78,8 +76,7 @@ static void apply_pending(CalcState *s){
 }
 
 void calc_press_op(CalcState *s, Op op){
-    if (s->entering) { /* finish entering current */
-        /* current already set from dispbuf */
+    if (s->entering) {
         s->entering = 0;
     }
     if (s->pending_op == OP_NONE){
@@ -145,16 +142,13 @@ void calc_reciprocal(CalcState *s){
     s->entering = 0;
 }
 void calc_backspace(CalcState *s){
-    if (!s->entering) return;  /* result showing, nothing to delete */
-
-    /* strip the last character from the display buffer */
+    if (!s->entering) return;  
     char *buf = dispbuf;
     size_t len = strlen(buf);
     if (len > 1){
         buf[len - 1] = '\0';
         s->current = strtold(buf, NULL);
     } else {
-        /* only one digit left, reset to 0 */
         s->current = 0.0L;
         s->entering = 0;
     }
