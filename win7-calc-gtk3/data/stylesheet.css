@@ -15,7 +15,7 @@ scrolledwindow.display-scroll scrollbar {
     margin: 3px; 
 }
 .display-scroll { 
-    background-image: linear-gradient(to bottom, #d6e3f6, #f5f5f5);
+    background-image: url("display.png");
     min-height: 40px;
     margin: 3px; 
     margin-bottom: 0px;
@@ -27,7 +27,7 @@ scrolledwindow.display-scroll scrollbar {
     padding-top: 5px;
 }
 button.calc { 
-    background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #e0eef8, #e0eef8, #ffffff); 
+    background-image: url("calcbtn.png"); 
     margin: 1px; 
     padding: 3px; 
     margin-right: 1.5px;
@@ -37,13 +37,17 @@ button.calc {
     padding: 3px;  
 }
 button.calc:hover { 
-    background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); 
+    background-image: url("hoverbtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 button.calc:active { 
-    background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); 
+    background-image: url("activebtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
 button.op { 
-    background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #ffffff); 
+    background-image: url("opbtn.png"); 
     margin-right: 1.5px; 
     margin: 1px; 
     border: 1px solid #8e9cae; 
@@ -52,12 +56,16 @@ button.op {
     padding: 3px;  
 }
 button.op:hover { 
-    background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); 
+    background-image: url("hoverbtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 button.op:active { 
-    background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); 
+    background-image: url("activebtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-button.eq { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd,   #f4f7fd,#f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed,  #d5e2ed,#d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed,  #d5e2ed,#d5e2ed, #d5e2ed, #d5e2ed, #ffffff); 
+button.eq { background-image: url("eqbtn.png"); 
 margin-right: 1.5px;
 margin: 1px;
 border: 1px solid #8e9cae; 
@@ -66,13 +74,17 @@ font-size: 26px; font-weight: light;
 padding: 3px;  
 }
 button.eq:hover { 
-    background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); 
+    background-image: url("hoverbtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 button.eq:active { 
-    background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); 
+    background-image: url("activebtn.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 button.mem { 
-    background-image: linear-gradient(to bottom, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #ffffff); 
+    background-image: url("membtn.png"); 
     margin: 1px;
     margin-right: 1.5px;
     border: 1px solid #8e9cae; 
