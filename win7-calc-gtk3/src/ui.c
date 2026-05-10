@@ -156,9 +156,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         /* center the button grid */
         ".button-grid { margin: 3px; }"
         /* Display frame */
-        ".calc-frame { "
-        "  border: 0px solid #8e9cae; border-radius: 4px; padding: 1px; right: 100%; top: 100%;}"
-        ".display-scroll { background-image: linear-gradient(to bottom, #d0ddf0, #ffffff); max-width: 188px; min-height: 48px; right: 100%;"
+        ".display-scroll { background-image: linear-gradient(to bottom, #d6e3f6, #f5f5f5); max-width: 188px; min-height: 48px; right: 100%; margin: 3px; margin-bottom: -3px;"
         "  border: 1px solid #8e9cae; border-radius: 2px;"
         "  font-size: 18px; font-weight: 600; color: #1a1a1a;  }"
 
@@ -232,16 +230,11 @@ GtkWidget* create_main_window(GtkApplication *app){
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), help_item);
     gtk_box_pack_start(GTK_BOX(vbox), menubar, TRUE, TRUE, 0);
 
-    /* ── Display ── */
-    GtkWidget *frame = gtk_frame_new(NULL);
-    ctx = gtk_widget_get_style_context(frame);
-    gtk_style_context_add_class(ctx, "calc-frame");
-    gtk_box_pack_start(GTK_BOX(vbox), frame, TRUE, TRUE, 0);
 
     GtkWidget *display_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     ctx = gtk_widget_get_style_context(display_box);
     gtk_style_context_add_class(ctx, "display");
-    gtk_container_add(GTK_CONTAINER(frame), display_box);
+    gtk_box_pack_start(GTK_BOX(vbox), display_box, TRUE, TRUE, 0);
 
     display_label = gtk_label_new("0");
     gtk_widget_set_halign(display_label, GTK_ALIGN_END);
@@ -334,6 +327,16 @@ GtkWidget* create_main_window(GtkApplication *app){
         g_signal_connect(b, "clicked", G_CALLBACK(sqrt_clicked), NULL);
     }
 
+    /*
+     * Rows 2–5: digit grid + right-side operators
+     *
+     * Layout (col 0-3 = digits/ops, col 4 = extra ops, col 4 row 4-5 = tall =):
+     *
+     *   row2:  7   8   9   /    %
+     *   row3:  4   5   6   *   1/x
+     *   row4:  1   2   3   -    =  ← tall = spans rows 4-5
+     *   row5:  0  [0]  .   +    =  ↑
+     */
 
     /* Digit + basic-op rows */
     typedef struct { const char *label; int col; int row; } Cell;
