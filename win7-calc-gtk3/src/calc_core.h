@@ -7,7 +7,7 @@ typedef struct {
     long double accumulator;
     long double current;
     Op pending_op;
-    int entering; /* 1 if typing a number */
+    int entering;
 } CalcState;
 
 void calc_init(CalcState *s);
