@@ -5,12 +5,8 @@ kind of looks like the windows 7's calculator.
 run <code> git clone https://github.com/danr23/win7calc.git && cd win7calc/win7-calc-gtk3</code>
 then to compile it run <code> meson setup buildir && meson compile -C builddir</code> (you can replace builddir with a name of your build directory)
 and then run <code> sudo ln -sf ~/win7calc/win7-calc-gtk3/builddir/win7calc /usr/local/bin/win7calc && sudo cp ~/win7calc/win7-calc-gtk3/desktop/win7calc.desktop /usr/share/applications/</code> to make it appear in the start menu.
+Then, run <code>cp -r win7calc/win7-calc-gtk3/data ~</code> to copy the css stylesheet to the home directory because for some reason, when you run the program without the stylesheet directory being in your home folder, the stylesheet does not load.
 <h2>Screenshots</h2>
 <img src="screenshot.png" alt="Screenshot">
 <h2>How to make it look more like windows 7's calculator</h2>
 To change the look of the menubar in the calculator, install the <a href="https://store.kde.org/p/1012735/">Aero GTK3 Theme</a>
-<h2>To do list:</h2>
-    <h3>Make scientific mode for the calculator ❌</h3>
-    <h3>Make an accurate windows 7 calculator standard mode layout ✅</h3>
-    <h3>Make an accurate windows 7 calculator scientific mode layout ❌</h3>
-    <h3>Make the buttons "Copy" and "Paste" in the menubar work ❌</h3>
