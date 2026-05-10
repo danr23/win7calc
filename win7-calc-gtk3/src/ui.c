@@ -156,9 +156,9 @@ GtkWidget* create_main_window(GtkApplication *app){
         /* center the button grid */
         ".button-grid { margin: 3px; }"
         /* Display frame */
-        ".display-scroll { background-image: linear-gradient(to bottom, #d6e3f6, #f5f5f5); max-width: 188px; min-height: 48px; right: 100%; margin: 3px; margin-bottom: 0px;"
+        ".display-scroll { background-image: linear-gradient(to bottom, #d6e3f6, #f5f5f5); max-width: 188px; min-height: 43px; right: 100%; margin: 3px; margin-bottom: 0px;"
         "  border: 1px solid #8e9cae; border-radius: 2px;"
-        "  font-size: 18px; font-weight: 600; color: #1a1a1a;  }"
+        "  font-size: 18px; font-weight: 600; color: #1a1a1a;  padding-top: 5px;}"
 
         /* Standard calc buttons */
         "button.calc { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #e0eef8, #e0eef8, #ffffff); right: 100%; top: 100%; margin: 1px; padding: 3px; margin-right: 1.5px;"
