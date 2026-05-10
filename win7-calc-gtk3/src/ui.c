@@ -144,45 +144,47 @@ GtkWidget* create_main_window(GtkApplication *app){
     GtkStyleContext *ctx;
     GtkWidget *win = gtk_application_window_new(app);
     gtk_window_set_title(GTK_WINDOW(win), "Calculator");
-    gtk_window_set_default_size(GTK_WINDOW(win), 190, 267);
+    gtk_window_set_default_size(GTK_WINDOW(win), 205, 282);
     gtk_window_set_resizable(GTK_WINDOW(win), FALSE);
 
     GtkCssProvider *css = gtk_css_provider_new();
     gtk_css_provider_load_from_data(css,
         /* Window background — Win7 blue-grey gradient */
         /*"window { background-image: linear-gradient(to bottom, #f4f6fa, #f4f6fa, #f4f6fa, #dce6f4, #dce6f4, #c8d8ee); color: #1a1a1a; margin: 6px; }"*/
-        "window { background-image: linear-gradient(to bottom, #edf4fb, #dae6f2, #dae6f2, #dae6f2, #dae6f2, #dae6f2); color: #1a1a1a; margin: 2px;  padding: 6px; right:100%; top: 100%; font-size: 10px; }"
-        "scrolledwindow.display-scroll scrollbar { min-width: 0; min-height: 0; opacity: 0; }"
+        "window { background-image: linear-gradient(to bottom, #edf4fb, #dae6f2, #dae6f2, #dae6f2, #dae6f2, #dae6f2); color: #1a1a1a; margin: 1.5px;  margin-right: 1.5px; padding: 6px; right:100%; top: 100%; font-size: 10px; }"
+        "scrolledwindow.display-scroll scrollbar { min-width: 0; min-height: 0; opacity: 0;  }"\
+        /* center the button grid */
+        ".button-grid { margin: 3px; }"
         /* Display frame */
         ".calc-frame { "
         "  border: 0px solid #8e9cae; border-radius: 4px; padding: 1px; right: 100%; top: 100%;}"
         ".display-scroll { background-image: linear-gradient(to bottom, #d0ddf0, #ffffff); max-width: 188px; min-height: 48px; right: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 2px;"
-        "  font-size: 15px; font-weight: 600; color: #1a1a1a; }"
+        "  font-size: 18px; font-weight: 600; color: #1a1a1a;  }"
 
         /* Standard calc buttons */
-        "button.calc { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed); right: 100%; top: 100%; margin: 1px; padding: 1px;"
+        "button.calc { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed); right: 100%; top: 100%; margin: 1.5px; padding: 1px; margin-right: 1.5px;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
-        "  font-size: 10px; padding: 1px; }"
+        "  font-size: 13px; padding: 1px;  }"
         "button.calc:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.calc:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
         /* Operator buttons (right column) */
-        "button.op { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin: 1px; right: 100%; top: 100%;"
+        "button.op { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px;; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
-        "  font-size: 10px; padding: 1px; }"
+        "  font-size: 13px; padding: 1px;  }"
         "button.op:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.op:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
-        "button.eq { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin: 1px; right: 100%; top: 100%;"
+        "button.eq { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px;; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
-        "  font-size: 15px; font-weight: bold; padding: 1px; }"
+        "  font-size: 18px; font-weight: bold; padding: 1px;  }"
         "button.eq:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.eq:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
-        "button.mem { background-image: linear-gradient(to bottom, #d5e1ef, #d5e1f2); margin: 1px; right: 100%; top: 100%;"
+        "button.mem { background-image: linear-gradient(to bottom, #d5e1ef, #d5e1f2); margin: 1.5px; right: 100%; top: 100%; margin-right: 1.5px; "
         "  border: 1px solid #8e9cae; border-radius: 3px;"
-        "  font-size: 10px; padding: 1px; color: #333; }"
+        "  font-size: 11px; padding: 1px; color: #333; }"
         "button.mem:hover { background-image: linear-gradient(to bottom, #d5e1f2, #d5e1ef); }"
         , (gssize)-1, NULL);
     gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
@@ -228,13 +230,13 @@ GtkWidget* create_main_window(GtkApplication *app){
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), view_item);
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), edit_item);
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), help_item);
-    gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), menubar, TRUE, TRUE, 0);
 
     /* ── Display ── */
     GtkWidget *frame = gtk_frame_new(NULL);
     ctx = gtk_widget_get_style_context(frame);
     gtk_style_context_add_class(ctx, "calc-frame");
-    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 4);
+    gtk_box_pack_start(GTK_BOX(vbox), frame, TRUE, TRUE, 0);
 
     GtkWidget *display_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     ctx = gtk_widget_get_style_context(display_box);
@@ -267,7 +269,9 @@ GtkWidget* create_main_window(GtkApplication *app){
     GtkWidget *grid = gtk_grid_new();
     gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
     gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
-    gtk_box_pack_start(GTK_BOX(vbox), grid, FALSE, FALSE, 0);
+    ctx = gtk_widget_get_style_context(grid);
+    gtk_style_context_add_class(ctx, "button-grid");
+    gtk_box_pack_start(GTK_BOX(vbox), grid, TRUE, TRUE, 0);
 
     /* Button width constants */
     const int BW = 34;  /* normal button width  */
