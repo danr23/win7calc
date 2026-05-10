@@ -5,9 +5,10 @@ static CalcState state;
 static GtkWidget *display_label;
 static GtkWidget *display_scroll;
 
-static void scroll_display_to_end(void){
+static gboolean scroll_display_to_end(void){
     GtkAdjustment *adj = gtk_scrolled_window_get_hadjustment(GTK_SCROLLED_WINDOW(display_scroll));
     gtk_adjustment_set_value(adj, gtk_adjustment_get_upper(adj));
+    return G_SOURCE_REMOVE;
 }
 
 static void update_display(void){
@@ -181,7 +182,8 @@ GtkWidget* create_main_window(GtkApplication *app){
     gtk_widget_set_valign(display_label, GTK_ALIGN_CENTER);
     gtk_widget_set_margin_end(display_label, 8);
     gtk_label_set_xalign(GTK_LABEL(display_label), 1.0);
-    GtkWidget *scroll = gtk_scrolled_window_new(NULL, NULL);  
+    GtkWidget *scroll = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scroll), FALSE);
     display_scroll = scroll;                                   
     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scroll),
     GTK_POLICY_AUTOMATIC,
@@ -305,6 +307,8 @@ GtkWidget* create_main_window(GtkApplication *app){
         gtk_grid_attach(GTK_GRID(grid), b, 4, 3, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(reciprocal_clicked), NULL);
     }
+
+    /* Tall = button spanning rows 4-5 in column 4 */
     {
         GtkWidget *b = gtk_button_new_with_label("=");
         gtk_widget_set_size_request(b, BW, BH*2+4);
