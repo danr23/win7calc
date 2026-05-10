@@ -163,26 +163,26 @@ GtkWidget* create_main_window(GtkApplication *app){
         "  font-size: 18px; font-weight: 600; color: #1a1a1a;  }"
 
         /* Standard calc buttons */
-        "button.calc { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed); right: 100%; top: 100%; margin: 1.5px; padding: 1px; margin-right: 1.5px;"
+        "button.calc { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #e0eef8, #e0eef8, #ffffff); right: 100%; top: 100%; margin: 1.5px; padding: 1px; margin-right: 1.5px;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 13px; padding: 1px;  }"
         "button.calc:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.calc:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
         /* Operator buttons (right column) */
-        "button.op { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
+        "button.op { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #ffffff); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 13px; padding: 1px;  }"
         "button.op:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.op:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
-        "button.eq { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
+        "button.eq { background-image: linear-gradient(to bottom, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #f4f7fd, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #d5e2ed, #ffffff); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 18px; font-weight: bold; padding: 1px;  }"
         "button.eq:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.eq:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
-        "button.mem { background-image: linear-gradient(to bottom, #d5e1ef, #d5e1f2); margin: 1.5px; right: 100%; top: 100%; margin-right: 1.5px; "
+        "button.mem { background-image: linear-gradient(to bottom, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1ef, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #d5e1f2, #ffffff); margin: 1.5px; right: 100%; top: 100%; margin-right: 1.5px; "
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 11px; padding: 1px; color: #333; }"
         "button.mem:hover { background-image: linear-gradient(to bottom, #d5e1f2, #d5e1ef); }"
@@ -334,16 +334,6 @@ GtkWidget* create_main_window(GtkApplication *app){
         g_signal_connect(b, "clicked", G_CALLBACK(sqrt_clicked), NULL);
     }
 
-    /*
-     * Rows 2–5: digit grid + right-side operators
-     *
-     * Layout (col 0-3 = digits/ops, col 4 = extra ops, col 4 row 4-5 = tall =):
-     *
-     *   row2:  7   8   9   /    %
-     *   row3:  4   5   6   *   1/x
-     *   row4:  1   2   3   -    =  ← tall = spans rows 4-5
-     *   row5:  0  [0]  .   +    =  ↑
-     */
 
     /* Digit + basic-op rows */
     typedef struct { const char *label; int col; int row; } Cell;
