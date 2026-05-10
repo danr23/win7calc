@@ -170,13 +170,13 @@ GtkWidget* create_main_window(GtkApplication *app){
         "button.calc:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
         /* Operator buttons (right column) */
-        "button.op { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px;; margin: 1.5px; right: 100%; top: 100%;"
+        "button.op { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 13px; padding: 1px;  }"
         "button.op:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
         "button.op:active { background-image: linear-gradient(to bottom, #c8d8ec, #dce8f8); }"
 
-        "button.eq { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px;; margin: 1.5px; right: 100%; top: 100%;"
+        "button.eq { background-image: linear-gradient(to bottom, #eef3f8, #eef3f8, #eef3f8, #d0dde8, #d0dde8, #d0dde8); margin-right: 1.5px; margin: 1.5px; right: 100%; top: 100%;"
         "  border: 1px solid #8e9cae; border-radius: 3px;"
         "  font-size: 18px; font-weight: bold; padding: 1px;  }"
         "button.eq:hover { background-image: linear-gradient(to bottom, #e0ecfa, #c4d8f0); }"
@@ -293,7 +293,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         GtkWidget *b = gtk_button_new_with_label("\u2190");
         gtk_widget_set_size_request(b, BW, BH);
         ctx = gtk_widget_get_style_context(b);
-        gtk_style_context_add_class(ctx, "calc");
+        gtk_style_context_add_class(ctx, "op");
         gtk_grid_attach(GTK_GRID(grid), b, 0, 1, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(clear_clicked), GINT_TO_POINTER(1));
     }
@@ -302,7 +302,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         GtkWidget *b = gtk_button_new_with_label("CE");
         gtk_widget_set_size_request(b, BW, BH);
         ctx = gtk_widget_get_style_context(b);
-        gtk_style_context_add_class(ctx, "calc");
+        gtk_style_context_add_class(ctx, "op");
         gtk_grid_attach(GTK_GRID(grid), b, 1, 1, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(clear_clicked), GINT_TO_POINTER(1));
     }
@@ -311,7 +311,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         GtkWidget *b = gtk_button_new_with_label("C");
         gtk_widget_set_size_request(b, BW, BH);
         ctx = gtk_widget_get_style_context(b);
-        gtk_style_context_add_class(ctx, "calc");
+        gtk_style_context_add_class(ctx, "op");
         gtk_grid_attach(GTK_GRID(grid), b, 2, 1, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(clear_clicked), GINT_TO_POINTER(0));
     }
@@ -320,7 +320,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         GtkWidget *b = gtk_button_new_with_label("\u00b1");
         gtk_widget_set_size_request(b, BW, BH);
         ctx = gtk_widget_get_style_context(b);
-        gtk_style_context_add_class(ctx, "calc");
+        gtk_style_context_add_class(ctx, "op");
         gtk_grid_attach(GTK_GRID(grid), b, 3, 1, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(negate_clicked), NULL);
     }
@@ -329,7 +329,7 @@ GtkWidget* create_main_window(GtkApplication *app){
         GtkWidget *b = gtk_button_new_with_label("\u221a");
         gtk_widget_set_size_request(b, BW, BH);
         ctx = gtk_widget_get_style_context(b);
-        gtk_style_context_add_class(ctx, "calc");
+        gtk_style_context_add_class(ctx, "op");
         gtk_grid_attach(GTK_GRID(grid), b, 4, 1, 1, 1);
         g_signal_connect(b, "clicked", G_CALLBACK(sqrt_clicked), NULL);
     }
