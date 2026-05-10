@@ -13,6 +13,7 @@ scrolledwindow.display-scroll scrollbar {
 }
 .button-grid { 
     margin: 3px; 
+    font-family: Segoe UI;
 }
 .display-scroll { 
     background-image: url("display.png");
@@ -21,10 +22,11 @@ scrolledwindow.display-scroll scrollbar {
     margin-bottom: 0px;
     border: 1px solid #8e9cae; 
     border-radius: 2px;
-    font-size: 18px; 
-    font-weight: 600; 
+    font-size: 22px; 
+    font-weight: light; 
     color: #1a1a1a;  
     padding-top: 5px;
+    font-family: Monospace;
 }
 button.calc { 
     background-image: url("calcbtn.png"); 
@@ -35,11 +37,13 @@ button.calc {
     border-radius: 3px;
     font-size: 13px; 
     padding: 3px;  
+    font-family: Segoe UI;
 }
 button.calc:hover { 
     background-image: url("hoverbtn.png"); 
     background-repeat: no-repeat;
     background-size: cover;
+    border-color: #ffff00;
 }
 button.calc:active { 
     background-image: url("activebtn.png"); 
@@ -54,11 +58,13 @@ button.op {
     border-radius: 3px;
     font-size: 9px; 
     padding: 3px;  
+    font-family: Segoe UI;
 }
 button.op:hover { 
     background-image: url("hoverbtn.png"); 
     background-repeat: no-repeat;
     background-size: cover;
+    border-color: #ffff00;
 }
 button.op:active { 
     background-image: url("activebtn.png"); 
@@ -72,14 +78,16 @@ border: 1px solid #8e9cae;
 border-radius: 3px;
 font-size: 26px; font-weight: light; 
 padding: 3px;  
+font-family: Segoe UI;
 }
 button.eq:hover { 
-    background-image: url("hoverbtn.png"); 
+    background-image: url("eqhoverbtn.png"); 
     background-repeat: no-repeat;
     background-size: cover;
+    border-color: #ffff00;
 }
 button.eq:active { 
-    background-image: url("activebtn.png"); 
+    background-image: url("eqactivebtn.png"); 
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -89,9 +97,10 @@ button.mem {
     margin-right: 1.5px;
     border: 1px solid #8e9cae; 
     border-radius: 3px;
-    font-size: 11px; 
+    font-size: 9px; 
     padding: 3px; 
     color: #333; 
+    font-family: Segoe UI;
 }
 button.mem:hover { 
     background-image: linear-gradient(to bottom, #d5e1f2, #d5e1ef); 
